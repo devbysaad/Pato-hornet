@@ -1,0 +1,241 @@
+.coaches-section {
+  background: var(--color-secondary);
+  position: relative;
+}
+
+.coaches-section::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 50%;
+  background: linear-gradient(180deg, transparent 0%, var(--color-secondary-light) 100%);
+  pointer-events: none;
+}
+
+/* Head Coach */
+.head-coach-section {
+  display: grid;
+  grid-template-columns: 500px 1fr;
+  gap: 3rem;
+  margin-bottom: 4rem;
+  align-items: center;
+}
+
+.head-coach-image-wrapper {
+  position: relative;
+  border-radius: var(--radius-2xl);
+  overflow: hidden;
+  aspect-ratio: 3 / 4;
+  box-shadow: var(--shadow-xl);
+}
+
+.head-coach-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--transition-slow);
+}
+
+.head-coach-image-wrapper:hover .head-coach-image {
+  transform: scale(1.05);
+}
+
+.head-coach-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    rgba(10, 10, 10, 0.6) 100%
+  );
+}
+
+.head-coach-content {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.coach-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1.25rem;
+  background: var(--gradient-primary);
+  color: var(--color-white);
+  font-weight: 700;
+  font-size: 0.875rem;
+  border-radius: var(--radius-md);
+  width: fit-content;
+  letter-spacing: 0.1em;
+}
+
+.badge-icon {
+  font-size: 1.125rem;
+}
+
+.head-coach-name {
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 900;
+  color: var(--color-white);
+  margin: 0;
+  line-height: 1.1;
+}
+
+.head-coach-title {
+  font-size: 1.25rem;
+  color: var(--color-accent);
+  font-weight: 600;
+  margin: 0;
+  letter-spacing: 0.02em;
+}
+
+.head-coach-bio {
+  color: var(--color-gray-200);
+  font-size: 1.0625rem;
+  line-height: 1.8;
+  margin: 0.5rem 0;
+}
+
+/* Achievements */
+.achievements-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.achievement-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem;
+  background: rgba(26, 26, 26, 0.5);
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  transition: all var(--transition-base);
+}
+
+.achievement-item:hover {
+  border-color: var(--color-primary);
+  transform: translateX(4px);
+}
+
+.achievement-check {
+  width: 24px;
+  height: 24px;
+  background: var(--color-primary);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-white);
+  font-weight: 900;
+  font-size: 0.875rem;
+  flex-shrink: 0;
+}
+
+.achievement-text {
+  color: var(--color-white);
+  font-weight: 600;
+  font-size: 0.9375rem;
+}
+
+/* Assistant Coaches */
+.assistant-coaches {
+  position: relative;
+  z-index: 1;
+}
+
+.assistant-coaches-title {
+  font-size: clamp(1.75rem, 3vw, 2.25rem);
+  font-weight: 800;
+  color: var(--color-white);
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.assistant-coaches-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+}
+
+.assistant-coach-card {
+  text-align: center;
+  padding: 2.5rem 2rem;
+  transition: all var(--transition-base);
+}
+
+.coach-icon {
+  font-size: 4rem;
+  margin-bottom: 1.25rem;
+  display: inline-block;
+  transition: transform var(--transition-base);
+}
+
+.assistant-coach-card:hover .coach-icon {
+  transform: scale(1.2) rotate(10deg);
+}
+
+.coach-name {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--color-white);
+  margin: 0 0 0.5rem 0;
+}
+
+.coach-specialty {
+  color: var(--color-gray-300);
+  font-size: 0.9375rem;
+  font-weight: 500;
+  margin: 0;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .head-coach-section {
+    grid-template-columns: 400px 1fr;
+    gap: 2rem;
+  }
+
+  .achievements-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .head-coach-section {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .head-coach-image-wrapper {
+    aspect-ratio: 16 / 10;
+  }
+
+  .assistant-coaches-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .assistant-coaches-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .assistant-coach-card {
+    padding: 2rem 1.5rem;
+  }
+
+  .achievement-item {
+    padding: 0.625rem;
+  }
+
+  .achievement-text {
+    font-size: 0.875rem;
+  }
+}
